@@ -26,6 +26,17 @@ describe("Gilded Rose", function() {
     }
   });
 
+  it(`should not modify the quality of a Sulfuras item (remains ${QUALITY.sulfurasQuality})`, function() {
+    const quality = QUALITY.sulfurasQuality;
+    const sellIn = 5;
+    let items = [new Item(ItemType.Sulfuras, sellIn, quality)];
+    const gildedRose = new Shop(items);
+    for (let i = 0; i < 10; i++) {
+      items = gildedRose.updateQuality();
+      expect(items[0].quality).toBe(quality);
+    }
+  });
+
   it("should increase the quality of the aged brie item by 1 up until sellIn === 0", function() {
     let quality = QUALITY.agedBrieQuality;
     const sellIn = 3;
