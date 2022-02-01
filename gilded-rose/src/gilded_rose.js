@@ -1,7 +1,8 @@
 const ITEMS = {
   Sulfuras: 'Sulfuras, Hand of Ragnaros',
   AgedBrie: 'Aged Brie',
-  ConcertTicket: 'Backstage passes to a TAFKAL80ETC concert'
+  ConcertTicket: 'Backstage passes to a TAFKAL80ETC concert',
+  Conjured: 'Conjured'
 };
 
 
@@ -49,6 +50,16 @@ class Shop {
           }
           else {
             itemQuality = 0;
+          }
+          itemSellIn = itemSellIn - 1;
+          break;
+
+        case ITEMS.Conjured:
+          if(itemSellIn <= 0) {
+            itemQuality = itemQuality - 4;
+          }
+          else {
+            itemQuality = itemQuality - 2;
           }
           itemSellIn = itemSellIn - 1;
           break;
